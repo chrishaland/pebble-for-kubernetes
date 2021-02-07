@@ -9,16 +9,18 @@ function(name, namespace, port, email) {
         acme: {
             email: email,
             server: 'https://%s.%s.svc.cluster.local:%s/dir' % [name, namespace, port],
-            privateKeySecretRef: name
-        },
-        solvers: [
-            {
-                http01: {
-                    ingress: {
-                        class: 'nginx'
+            privateKeySecretRef: {
+                name: name
+            },
+            solvers: [
+                {
+                    http01: {
+                        ingress: {
+                            class: 'nginx'
+                        }
                     }
                 }
-            }
-        ]
+            ]
+        }
     }
 }
