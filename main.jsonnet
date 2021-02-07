@@ -16,6 +16,5 @@ function(
     namespace(NAMESPACE, ISTIO_ENABLED),
     service(NAME, NAMESPACE, PEBBLE_PORT),
     deployment(NAME, NAMESPACE, PEBBLE_TAG, PEBBLE_PORT),
-    secret(NAME, NAMESPACE),
     issuer(NAME, NAMESPACE, PEBBLE_PORT, ISSUER_EMAIL)
 ]
