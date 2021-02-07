@@ -1,11 +1,11 @@
 local namespace = import 'namespace.jsonnet';
 local service = import 'service.jsonnet';
 local deployment = import 'deployment.jsonnet';
-local secret = import 'secret.jsonnet';
 local issuer = import 'issuer.jsonnet';
+local serviceentry = import 'serviceentry.jsonnet';
 
 local PEBBLE_PORT = 14000;
-local ISTIO_ENABLED = false;
+local ISTIO_ENABLED = true;
 
 function(
     NAME='pebble',
@@ -16,5 +16,6 @@ function(
     namespace(NAMESPACE, ISTIO_ENABLED),
     service(NAME, NAMESPACE, PEBBLE_PORT),
     deployment(NAME, NAMESPACE, PEBBLE_TAG, PEBBLE_PORT),
+    serviceentry(NAME, NAMESPACE, PEBBLE_PORT),
     issuer(NAME, NAMESPACE, PEBBLE_PORT, ISSUER_EMAIL)
 ]

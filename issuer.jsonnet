@@ -8,10 +8,11 @@ function(name, namespace, port, email) {
     spec: {
         acme: {
             email: email,
-            server: 'https://%s.%s.svc.cluster.local:%s/dir' % [name, namespace, port],
+            server: 'https://pebble:%s/dir' % port,
             privateKeySecretRef: {
                 name: name
             },
+            skipTLSVerify: true,
             solvers: [
                 {
                     http01: {
