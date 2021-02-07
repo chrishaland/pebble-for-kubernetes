@@ -5,7 +5,7 @@ local issuer = import 'issuer.jsonnet';
 local serviceentry = import 'serviceentry.jsonnet';
 
 local PEBBLE_PORT = 14000;
-local ISTIO_ENABLED = true;
+local ISTIO_ENABLED = false;
 
 function(
     NAME='pebble',
